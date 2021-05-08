@@ -72,7 +72,6 @@ Exam.merge_sentences = function (sent1, sent2) {
     return sent3;
 };
 
-
 // Write a function that returns the number of lowercase letters in
 // input string.
 //     for example:
@@ -92,8 +91,6 @@ Exam.lowercase_count = function (inputStr) {
     }
     return counter;
 };
-
-
 
 // Objects
 
@@ -124,6 +121,7 @@ Exam.longest_key = function (inputObj) {
     }
     return result;
 };
+
 
 
 // Write a function that returns the largest value that is an even value in the
