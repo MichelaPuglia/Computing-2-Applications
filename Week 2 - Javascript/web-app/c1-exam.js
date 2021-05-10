@@ -30,7 +30,6 @@ Exam.every_third = function (array) {
         }
     }
     return newarray; //return the new array
-    //return array.filter((ignore, k) => k % 3 === 0);
 };
 
 
