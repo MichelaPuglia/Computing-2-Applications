@@ -3,9 +3,9 @@
 const thisisaboard =  [[0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 2, 0, 0],
-                [0, 2, 0, 0, 1, 0, 0],
-                [0, 1, 2, 1, 2, 0, 0]];
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0]];
 
 /* Question 1 */
 //function which takes no arguments and returns a new empty board
@@ -31,19 +31,17 @@ for (var i = array.length - 1; i >= 0; i--) {
     } return transpose(array)
 }
 
+const transpose = (array) => array[0].map(
+    (ignore, colIndex) => array.map((row) => row[colIndex])
+);
+
+
 const red_move = function (i, board) {
-    const testboard = transpose(board);
-    const final_board = transpose(testboard.splice(i, 1, insert_piece_row(testboard[i])))
+    const testBoard = transpose(board);
+    const insertPiece = testBoard.splice(i, 1, insert_piece_row(testBoard[i]));
+    const final_board = transpose(insertPiece);
     return final_board;
 
-}
-
-// a two-dimensional array
-var two_d = [[1,2,3],[4,5,6],[7,8,9]];
-
-// take the third column of a matrix and insert 
-const col3 = function (i, array){
-    return array.map(function(value,index) { return value[i]; });
 };
 
 debugger;
