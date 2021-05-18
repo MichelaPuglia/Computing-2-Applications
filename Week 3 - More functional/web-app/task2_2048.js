@@ -1,6 +1,9 @@
 const game_2048 = Object.create(null);
 
-const board = [ [1, 1, 2, 2], [1, 0, 0, 1], [0, 0, 1, 1], [0, 2, 2, 3] ];
+const board = [ [1, 1, 2, 2],
+                [1, 0, 0, 1],
+                [0, 0, 1, 1],
+                [0, 2, 2, 3] ];
 
 const row_flip = (row) => row.slice().reverse();
 
@@ -99,33 +102,68 @@ const TotalScoreCalculator = function(board){
 //function that returns true if there are moves that can be made on the board
 //false if there are no more moves left.
 
-const EqualBoards = function (boardBefore, boardAfter) {
-    if (boardBefore === boardAfter) {
+//test board which has no valid moves
+const board_no = [  [1, 2, 1, 2],
+                    [2, 3, 2, 3],
+                    [1, 2, 1, 2],
+                    [2, 3, 2, 3]
+];
+
+//function which checks if two boards are equal
+function EqualBoards(board1, board2) {
+    //JSON.stringify => method converts a JavaScript object or value to a
+    //JSON string
+    if (JSON.stringify(board1) === JSON.stringify(board2)) {
         return true;
-    } else {
-        return false;
-    }
+    } return false
 };
 
+//function iterates through all the moves
+//returns false if the board after the move is the same as before
+//i.e. false => no moves
+//else returns true meaning there are valid moves
 const ValidMoves = function (board) {
     if (EqualBoards(game_2048.left(board), board) === true) {
         if (EqualBoards(game_2048.right(board), board) === true) {
             if (EqualBoards(game_2048.up(board), board) === true) {
                 if (EqualBoards(game_2048.down(board), board) === true) {
-                return false;
+                    return false;
+                }
             }
         }
     } else {
         return true;
     }
-}
 };
 
-// const board_no = [  [1, 2, 1, 2],
-//                     [2, 3, 2, 3],
-//                     [1, 2, 1, 2],
-//                     [2, 3, 2, 3]
-//];
+
+/* Question 4 */
+
+//function returns an array of the indices of all the free spaces (zeros)
+//on the board.
+
+//iterates through the rows and makes a list of the indices of the zeroes
+const Indices = function(row) {
+    return row.reduce((c, v, i) => v === 0 ? c.concat(i) : c, []);
+}
+
+//function which maps all the indices on each row
+const FreeSpaces = function(board) {
+    return board.map(Indices)
+}
+
+
+/* Question 5 */
+
+//return a new board with a tile of value placed at indices.
+//Make sure this function doesn't edit the old board.
+
+//function takes board, indices and value to replace into the board
+const add_tile = function(board, index1, index2, value) {
+    let new_board = board;
+    new_board[index1][index2] = value;
+    return new_board;
+};
 
 export default Object.freeze(game_2048);
 
