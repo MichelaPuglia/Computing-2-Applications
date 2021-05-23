@@ -79,7 +79,11 @@ Deck.decks_equal = (deck_1, deck_2) => (
  * https://en.wikipedia.org/wiki/Faro_shuffle
  */
 Deck.faro_out_shuffle = function (deck) {
-    return deck; // Placeholder implementation.
+    return deck.slice(0, (deck.length / 2)).flatMap((card, i) => [card, deck[i + (deck.length / 2)]]);
+};
+
+Deck.faro_out_shuffle_malicious = function (arbitrary_shuffled_deck) {
+    return arbitrary_shuffled_deck;
 };
 
 /**
@@ -89,7 +93,10 @@ Deck.faro_out_shuffle = function (deck) {
  * https://en.wikipedia.org/wiki/Faro_shuffle
  */
 Deck.faro_in_shuffle = function (deck) {
-    return deck; // Placeholder implementation.
+    return deck.slice(0, (deck.length / 2)).flatMap((card, i) => [deck[i + (deck.length / 2)], card]);
 };
 
+
 export default Object.freeze(Deck);
+
+debugger;
