@@ -8,23 +8,12 @@
 <link rel="icon" href="favicon.png"> <!-- Import 'Favorites Icon' – favicon.png -->
 <script type="module" src="main.js"></script> <!-- Load the main script. Must be type="module". Have only one of these -->
 
-<main>
-    <section>
-        <button id="rock_button">🪨</button>
-        <button id="paper_button">🧻</button>
-        <button id="scissors_button">✂️</button>
-        <button id="lizard_button">🦖</button>
-        <button id="spock_button">🖖</button>
-    </section>
-    <section>
-        <span id="my_play"></span>
-        <span id="their_play"></span>
-    </section>
-</main>
-
-<aside>
-    <h1>History</h1>
-    <ul id="history_list">
-
-    </ul>
-</aside>
+<h1>Server Interaction</h1>
+<textarea id="send_json_pane">
+{
+  "type": "identify",
+  "name": "Freddie"
+}
+</textarea>
+<textarea id="received_json_pane" readonly="readonly"></textarea>
+<button id="send_button" type="button">Send…</button>
